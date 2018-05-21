@@ -29,13 +29,15 @@ N = size([dat_3,dat_4,dat_5,dat_6,dat_7],2);
 
 %% graphTDA - PH barcodes
 
-mh = max_h(N);
+% mh = max_h(N);
+mh = 0;
 
-bar_3 = mat2phb(dat_3, mh);
-bar_4 = mat2phb(dat_4, mh);
-bar_5 = mat2phb(dat_5, mh);
-bar_6 = mat2phb(dat_6, mh);
-bar_7 = mat2phb(dat_7, mh);
+[dist_3,epsilon_3,bar_3] = mat2phb(dat_3, mh, 'Euclidean');
+[dist_4,epsilon_4,bar_4] = mat2phb(dat_4, mh, 'Euclidean'); 
+[dist_5,epsilon_5,bar_5] = mat2phb(dat_5, mh, 'Euclidean');
+[dist_6,epsilon_6,bar_6] = mat2phb(dat_6, mh, 'Euclidean');
+[dist_7,epsilon_7,bar_7] = mat2phb(dat_7, mh, 'Euclidean');
+
 
 
 %% graphTDA - n-dim simplicial complexes

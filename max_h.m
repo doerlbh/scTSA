@@ -1,4 +1,4 @@
-% max_h
+% max_h (NO LONGER NEEDED)
 % find the maximum H for presistent homology given N
 
 % Author:       Baihan Lin
@@ -6,6 +6,5 @@
 % Date:         04/2018
 
 function mh = max_h(N)
-
 
 end
