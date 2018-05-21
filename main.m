@@ -9,13 +9,13 @@ addpath('/Users/DoerLBH/Dropbox/git/graphTDA');
 
 %% data input
 
-val_prop = 0.8;
+val_prop = 0.1;
 
-[inp_3, val_3] = dat2mat('data3.txt',val_prop);
-[inp_4, val_4] = dat2mat('data4.txt',val_prop);
-[inp_5, val_5] = dat2mat('data5.txt',val_prop);
-[inp_6, val_6] = dat2mat('data6.txt',val_prop);
-[inp_7, val_7] = dat2mat('data7.txt',val_prop);
+[inp_3, val_3] = dat2mat('data_E3.txt',val_prop);
+[inp_4, val_4] = dat2mat('data_E4.txt',val_prop);
+[inp_5, val_5] = dat2mat('data_E5.txt',val_prop);
+[inp_6, val_6] = dat2mat('data_E6.txt',val_prop);
+[inp_7, val_7] = dat2mat('data_E7.txt',val_prop);
 
 %% data preprocessing (TODO)
 
