@@ -1,0 +1,35 @@
+% graphTDA
+
+% Author:       Baihan Lin
+% Affliation:   Rabadan Lab, Columbia University
+% Date:         04/2018
+
+
+clear all; close all;
+addpath('/Users/DoerLBH/Dropbox/git/graphTDA');
+
+%% data input
+
+inp_3, val_3 = data2mat('data3.txt',0.8);
+inp_3, val_4 = data2mat('data4.txt',0.8);
+data_5, val_5 = data2mat('data5.txt',0.8);
+data_6, val_6 = data2mat('data6.txt',0.8);
+data_7, val_7 = data2mat('data7.txt',0.8);
+
+
+%% data preprocessing (TODO)
+
+
+
+%% graphTDA - PH barcodes
+
+
+
+%% graphTDA - n-dim simplicial complexes
+
+
+
+%% graphTDA - Betti number analysis
+
+
+%% validation - 
