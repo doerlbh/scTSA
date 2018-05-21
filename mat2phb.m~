@@ -5,22 +5,39 @@
 % Affliation:   Rabadan Lab, Columbia University
 % Date:         04/2018
 
-function [graph, bar] = mat2phb(dat, h, dist)
+function [ph,dist,epsilon,barcode] = mat2phb(dat, h, metric)
 
 N = size(dat, 2);
-graph = zeros(N,N);
-if strcmp(dist, 'Euclidean')
-    for x = 1:N
-        for y = 1:N
-            graph(x,y) = sqrt(sum((dat(:,x) - dat(:,y)).^2))
-            graph(y,x) = graph(x,y);
+dist = zeros(N,N);
+
+switch metric
+    case 'Euclidean'
+        for x = 1:N
+            for y = 1:N
+                dist(x,y) = sqrt(sum((dat(:,x) - dat(:,y)).^2));
+                dist(y,x) = dist(x,y);
+            end
         end
-    end
+    otherwise
+        disp('TBA')
 end
 
+barcode = [];
 switch h
     case 0
-    
+        barcode = zeros(N,100);
+        max_dist = max(max(dist));
+        epsilon = linspace(0,max_dist);
+        for t = 1:99
+            graph = [dist <= epsilon(t)];
+            betti_0 = int64(N - (sum(sum(graph)) - N) / 2);
+            if betti_0 < 0 
+                betti_0 = 1;
+            end
+            barcode(betti_0, t) = 1; 
+        end
+        [~,] = max(sum(barcode,2));
+        
     otherwise
-        disp(')
+        disp('TBA')
 end

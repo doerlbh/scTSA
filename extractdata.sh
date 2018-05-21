@@ -37,3 +37,5 @@ do
 	cut -f2- $f > trimmed-$f
 done
 paste trimmed-E7* | tr -s ' ' > data_E7.txt
+
+# dependent on the scRNA processed data
