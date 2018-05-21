@@ -46,6 +46,14 @@ switch h
         [~, ph] = max(sum(barcode(2:end,:),2));
         ph = ph + 1;
         
+        imagesc(barcode)
+        colormap(flipud(gray))
+        caxis('auto')
+        colorbar
+        ylabel('\beta_0')
+        xlabel('\epsilon')
+        title('Persistent homology of \beta_0')
+        
     otherwise
         disp('TBA')
 end

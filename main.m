@@ -37,10 +37,10 @@ st = 100;
 mh = 0;
 
 [ph_3,dist_3,epsilon_3,bar_3] = mat2phb(dat_3, mh, ss, st, 'Euclidean');
-% [ph_4,dist_4,epsilon_4,bar_4] = mat2phb(dat_4, mh, ss, st, 'Euclidean'); 
-% [ph_5,dist_5,epsilon_5,bar_5] = mat2phb(dat_5, mh, ss, st, 'Euclidean');
-% [ph_6,dist_6,epsilon_6,bar_6] = mat2phb(dat_6, mh, ss, st, 'Euclidean');
-% [ph_7,dist_7,epsilon_7,bar_7] = mat2phb(dat_7, mh, ss, st, 'Euclidean');
+[ph_4,dist_4,epsilon_4,bar_4] = mat2phb(dat_4, mh, ss, st, 'Euclidean'); 
+[ph_5,dist_5,epsilon_5,bar_5] = mat2phb(dat_5, mh, ss, st, 'Euclidean');
+[ph_6,dist_6,epsilon_6,bar_6] = mat2phb(dat_6, mh, ss, st, 'Euclidean');
+[ph_7,dist_7,epsilon_7,bar_7] = mat2phb(dat_7, mh, ss, st, 'Euclidean');
 
 
 %% graphTDA - n-dim simplicial complexes
