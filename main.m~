@@ -42,21 +42,22 @@ pdata_E3.dimension
 L = WitnessStream.makeRandomLandmarks(pdata_E3, ss);
 R = WitnessStream.estimateRmax(pdata_E3, L);
 
-dmax = 3;
-tmax = R/2;
+delta = 0.1;
+dmax = 7;
+tmax = R/6;
 
-wit_E3 = Plex.WitnessStream(0.01, dmax, tmax, L, pdata_E3);
+wit_E3 = Plex.WitnessStream(delta, dmax, tmax, L, pdata_E3);
 
 wit_E3.size
 
-intervals = Plex.Persistence.computeIntervals(wit_E3);
-Plex.plot(intervals, 'wit_E3', tmax)
+% intervals = Plex.Persistence.computeIntervals(wit_E3);
+% Plex.plot(intervals, 'wit_E3', tmax)
 
 wit_E3_Expl = Plex.makeExplicit(wit_E3);
 intervals = Plex.Persistence.computeIntervals(wit_E3_Expl);
 Plex.FilterInfinite(intervals)
 
-size(s6.dump(3).C)
+size(wit_E3_Expl.dump(3).C)
 
 %% graphTDA - PH barcodes
 

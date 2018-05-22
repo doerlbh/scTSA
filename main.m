@@ -44,14 +44,14 @@ R = WitnessStream.estimateRmax(pdata_E3, L);
 
 delta = 0.1;
 dmax = 7;
-tmax = R/4;
+tmax = R/6;
 
 wit_E3 = Plex.WitnessStream(delta, dmax, tmax, L, pdata_E3);
 
 wit_E3.size
 
-intervals = Plex.Persistence.computeIntervals(wit_E3);
-Plex.plot(intervals, 'wit_E3', tmax)
+% intervals = Plex.Persistence.computeIntervals(wit_E3);
+% Plex.plot(intervals, 'wit_E3', tmax)
 
 wit_E3_Expl = Plex.makeExplicit(wit_E3);
 intervals = Plex.Persistence.computeIntervals(wit_E3_Expl);
