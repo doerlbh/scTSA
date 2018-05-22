@@ -9,13 +9,17 @@ addpath('/Users/DoerLBH/Dropbox/git/graphTDA');
 addpath('/Users/DoerLBH/Dropbox/git/graphTDA/JPlex');
 startJPlex
 
+% subsampling
+ss = 50;
+st = 100;
+
 %% data input
 
-val_prop = 0.1;
+val_prop = 0;
 
 [inp_3, val_3] = dat2mat('data_E3.txt',val_prop);
 [inp_4, val_4] = dat2mat('data_E4.txt',val_prop);
-[inp_5, val_5] = dat2mat('data_E5.txt',val_prop);
+[inp_5, val_5] = dat2mat('data_E5.txt',val_prop); 
 [inp_6, val_6] = dat2mat('data_E6.txt',val_prop);
 [inp_7, val_7] = dat2mat('data_E7.txt',val_prop);
 
@@ -29,11 +33,32 @@ dat_7 = inp_7;
 
 N = size([dat_3,dat_4,dat_5,dat_6,dat_7],2);
 
-%% graphTDA - PH barcodes
+%% JPlex - testing
 
-% subsampling
-ss = 50;
-st = 100;
+pdata_E3 = EuclideanArrayData(dat_3');
+pdata_E3.count
+pdata_E3.dimension
+
+L = WitnessStream.makeRandomLandmarks(pdata_E3, ss);
+R = WitnessStream.estimateRmax(pdata_E3, L);
+
+dmax = 3;
+tmax = R/2;
+
+wit_E3 = Plex.WitnessStream(0.01, dmax, tmax, L, pdata_E3);
+
+wit_E3.size
+
+intervals = Plex.Persistence.computeIntervals(wit_E3);
+Plex.plot(intervals, 'wit_E3', tmax)
+
+wit_E3_Expl = Plex.makeExplicit(wit_E3);
+intervals = Plex.Persistence.computeIntervals(wit_E3_Expl);
+Plex.FilterInfinite(intervals)
+
+size(wit_E3_Expl.dump(3).C)
+
+%% graphTDA - PH barcodes
 
 % mh = max_h(N);
 mh = 0;
