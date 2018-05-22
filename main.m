@@ -42,10 +42,11 @@ pdata_E3.dimension
 L = WitnessStream.makeRandomLandmarks(pdata_E3, ss);
 R = WitnessStream.estimateRmax(pdata_E3, L);
 
-dmax = 3;
-tmax = R/2;
+delta = 0.1;
+dmax = 7;
+tmax = R/4;
 
-wit_E3 = Plex.WitnessStream(0.01, dmax, tmax, L, pdata_E3);
+wit_E3 = Plex.WitnessStream(delta, dmax, tmax, L, pdata_E3);
 
 wit_E3.size
 
