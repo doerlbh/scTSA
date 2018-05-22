@@ -5,7 +5,7 @@
 % Affliation:   Rabadan Lab, Columbia University
 % Date:         04/2018
 
-function [ph,dist,epsilon,barcode] = mat2phb(dat, h, ss, st, metric)
+function [ph,best_eps,dist,epsilon,barcode] = mat2phb(dat, h, ss, st, metric)
 
 N = size(dat, 2);
 dist = zeros(N,N);
@@ -46,13 +46,19 @@ switch h
         [~, ph] = max(sum(barcode(2:end,:),2));
         ph = ph + 1;
         
-        imagesc(barcode)
+        pph = barcode(ph,:) / sum(barcode(ph,:));    
+        best_eps = sum(pph .* epsilon);
+        best_idx = int64(sum(pph .* [1:100]));
+        disp(num2str(best_idx))
+        
+        imagesc(barcode); hold on
         colormap(flipud(gray))
         caxis('auto')
         colorbar
         ylabel('\beta_0')
         xlabel('\epsilon')
         title('Persistent homology of \beta_0')
+        line([best_idx best_idx],[0 ss],'Color',[1 0 0]);
         
     otherwise
         disp('TBA')

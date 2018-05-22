@@ -15,9 +15,9 @@ done
 paste trimmed-E3* | tr -s ' ' > data_E3.txt
 
 for f in `ls E4*`
+done
 do
 	cut -f2- $f > trimmed-$f
-done
 paste trimmed-E4* | tr -s ' ' > data_E4.txt
 
 for f in `ls E5*`
@@ -39,3 +39,5 @@ done
 paste trimmed-E7* | tr -s ' ' > data_E7.txt
 
 # dependent on the scRNA processed data
+
+

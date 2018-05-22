@@ -6,6 +6,8 @@
 
 clear all; close all;
 addpath('/Users/DoerLBH/Dropbox/git/graphTDA');
+addpath('/Users/DoerLBH/Dropbox/git/graphTDA/JPlex');
+startJPlex
 
 %% data input
 
@@ -36,22 +38,21 @@ st = 100;
 % mh = max_h(N);
 mh = 0;
 
-[ph_3,dist_3,epsilon_3,bar_3] = mat2phb(dat_3, mh, ss, st, 'Euclidean');
-[ph_4,dist_4,epsilon_4,bar_4] = mat2phb(dat_4, mh, ss, st, 'Euclidean'); 
-[ph_5,dist_5,epsilon_5,bar_5] = mat2phb(dat_5, mh, ss, st, 'Euclidean');
-[ph_6,dist_6,epsilon_6,bar_6] = mat2phb(dat_6, mh, ss, st, 'Euclidean');
-[ph_7,dist_7,epsilon_7,bar_7] = mat2phb(dat_7, mh, ss, st, 'Euclidean');
-
+[ph_3,best_eps_3,dist_3,eps_3,bar_3] = mat2phb(dat_3, mh, ss, st, 'Euclidean');
+% [ph_4,best_eps_4,dist_4,eps_4,bar_4] = mat2phb(dat_4, mh, ss, st, 'Euclidean'); 
+% [ph_5,best_eps_5,dist_5,eps_5,bar_5] = mat2phb(dat_5, mh, ss, st, 'Euclidean');
+% [ph_6,best_eps_6,dist_6,eps_6,bar_6] = mat2phb(dat_6, mh, ss, st, 'Euclidean');
+% [ph_7,best_eps_7,dist_7,eps_7,bar_7] = mat2phb(dat_7, mh, ss, st, 'Euclidean');
 
 %% graphTDA - n-dim simplicial complexes
 
-md = max_d(N);
+md = max_d(ss);
 
-nsc_3 = mat2nsc(dat_3, md);
-nsc_4 = mat2nsc(dat_4, md);
-nsc_5 = mat2nsc(dat_5, md);
-nsc_6 = mat2nsc(dat_6, md);
-nsc_7 = mat2nsc(dat_7, md);
+nsc_3 = mat2nsc(dist_3, best_eps_3, ss, st, md);
+nsc_4 = mat2nsc(dist_4, best_eps_4, ss, st, md);
+nsc_5 = mat2nsc(dist_5, best_eps_5, ss, st, md);
+nsc_6 = mat2nsc(dist_6, best_eps_6, ss, st, md);
+nsc_7 = mat2nsc(dist_7, best_eps_7, ss, st, md);
 
 %% graphTDA - Betti number analysis
 
