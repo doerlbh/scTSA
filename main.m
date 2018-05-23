@@ -64,14 +64,16 @@ dat_7 = score(timepoints == '7',1:max_d);
 delta = 0.3;
 dmax = 7;
 
-[BN_3, SC_3] = dat2Plex(dat_3, delta, dmax, ss, st);
-[BN_4, SC_4] = dat2Plex(dat_4, delta, dmax, ss, st);
-[BN_5, SC_5] = dat2Plex(dat_5, delta, dmax, ss, st);
-[BN_6, SC_6] = dat2Plex(dat_6, delta, dmax, ss, st);
-[BN_7, SC_7] = dat2Plex(dat_7, delta, dmax, ss, st);
+% [BN_3, SC_3] = dat2Plex(dat_3, delta, dmax, ss, st);
+% [BN_4, SC_4] = dat2Plex(dat_4, delta, dmax, ss, st);
+% [BN_5, SC_5] = dat2Plex(dat_5, delta, dmax, ss, st);
+% [BN_6, SC_6] = dat2Plex(dat_6, delta, dmax, ss, st);
+% [BN_7, SC_7] = dat2Plex(dat_7, delta, dmax, ss, st);
 
+load BN.mat
+load SC.mat
 
-%% plot BN and SC
+%% plot SC
 
 errorbar(1:dmax,mean(SC_3),std(SC_3)); hold on
 errorbar(1:dmax,mean(SC_4),std(SC_4));
@@ -81,9 +83,9 @@ errorbar(1:dmax,mean(SC_7),std(SC_7));
 legend('E3','E4','E5','E6','E7');
 xlabel('dimension')
 ylabel('# of complexes')
-title('number of simplicial complexes')
+title('number of simplicial complexes (with n = 50)')
 
-%%
+%% plot BN
 
 errorbar(0:dmax-1,mean(BN_3(:,1:dmax)),std(BN_3(:,1:dmax))); hold on
 errorbar(0:dmax-1,mean(BN_4(:,1:dmax)),std(BN_4(:,1:dmax)));
@@ -93,7 +95,48 @@ errorbar(0:dmax-1,mean(BN_7(:,1:dmax)),std(BN_7(:,1:dmax)));
 legend('E3','E4','E5','E6','E7');
 xlabel('Betti number order')
 ylabel('Betti number')
-title('Betti numbers')
+title('Betti numbers (with n = 50)')
+
+%% plot BN3 vs. BN1
+
+BN0 = [mean(BN_3(:,2)),mean(BN_4(:,1)),mean(BN_5(:,1)),mean(BN_6(:,1)),mean(BN_7(:,1))];
+BN1 = [mean(BN_3(:,2)),mean(BN_4(:,2)),mean(BN_5(:,2)),mean(BN_6(:,2)),mean(BN_7(:,2))];
+BN2 = [mean(BN_3(:,2)),mean(BN_4(:,3)),mean(BN_5(:,3)),mean(BN_6(:,3)),mean(BN_7(:,3))];
+BN3 = [mean(BN_3(:,2)),mean(BN_4(:,4)),mean(BN_5(:,4)),mean(BN_6(:,4)),mean(BN_7(:,4))];
+
+% plot(BN1(1),BN3(1), 'o'); hold on
+% plot(BN1(2),BN3(2), 'o');
+% plot(BN1(3),BN3(3), 'o');
+% plot(BN1(4),BN3(4), 'o');
+% plot(BN1(5),BN3(5), 'o');
+
+E3 = [BN1(1), BN3(1)];
+E4 = [BN1(2), BN3(2)];
+E5 = [BN1(3), BN3(3)];
+E6 = [BN1(4), BN3(4)];
+E7 = [BN1(5), BN3(5)];
+
+dp1 = E4 - E3;    
+dp2 = E5 - E4;    
+dp3 = E6 - E5;    
+dp4 = E7 - E6;    
+
+figure
+quiver(E3(1),E3(2),dp1(1),dp1(2),0); hold on
+quiver(E4(1),E4(2),dp2(1),dp2(2),0); 
+quiver(E5(1),E5(2),dp3(1),dp3(2),0); 
+quiver(E6(1),E6(2),dp4(1),dp4(2),0);
+grid
+% axis([0  10  0  10])
+text(E3(1),E3(2), sprintf('E3 (%.0f,%.0f)',E3))
+text(E4(1),E4(2), sprintf('E4 (%.0f,%.0f)',E4))
+text(E5(1),E5(2), sprintf('E5 (%.0f,%.0f)',E5))
+text(E6(1),E6(2), sprintf('E6 (%.0f,%.0f)',E6))
+text(E7(1),E7(2), sprintf('E7 (%.0f,%.0f)',E7))
+
+xlabel('Betti number 1')
+ylabel('Betti number 3')
+title('Betti number 3 vs. Betti number 1 (with n = 50)')
 
 
 %% graphTDA - PH barcodes
