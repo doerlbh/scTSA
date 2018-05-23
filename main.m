@@ -11,7 +11,7 @@ startJPlex
 
 % subsampling
 ss = 50;
-st = 100;
+st = 20;
 
 %% use preprocessed scTDA embryo data
 
@@ -61,24 +61,24 @@ dat_7 = score(timepoints == '7',1:max_d);
 
 %% JPlex - testing
 
-delta = 0.1;
+delta = 0.3;
 dmax = 7;
 
-% % [BN_3, SC_3] = dat2Plex(dat_3, delta, dmax, ss, st);
-% % [BN_4, SC_4] = dat2Plex(dat_4, delta, dmax, ss, st);
-% % [BN_5, SC_5] = dat2Plex(dat_5, delta, dmax, ss, st);
-% % [BN_6, SC_6] = dat2Plex(dat_6, delta, dmax, ss, st);
+[BN_3, SC_3] = dat2Plex(dat_3, delta, dmax, ss, st);
+[BN_4, SC_4] = dat2Plex(dat_4, delta, dmax, ss, st);
+[BN_5, SC_5] = dat2Plex(dat_5, delta, dmax, ss, st);
+[BN_6, SC_6] = dat2Plex(dat_6, delta, dmax, ss, st);
 [BN_7, SC_7] = dat2Plex(dat_7, delta, dmax, ss, st);
 
-%% plot BN and SC
 
+%% plot BN and SC
 
 errorbar(1:dmax,mean(SC_3),std(SC_3)); hold on
 errorbar(1:dmax,mean(SC_4),std(SC_4));
 errorbar(1:dmax,mean(SC_5),std(SC_5));
 errorbar(1:dmax,mean(SC_6),std(SC_6));
-% errorbar(1:dmax,mean(SC_7),std(SC_7));
-legend('E3','E4','E5','E6');%,'E7');
+errorbar(1:dmax,mean(SC_7),std(SC_7));
+legend('E3','E4','E5','E6','E7');
 xlabel('dimension')
 ylabel('# of complexes')
 title('number of simplicial complexes')
@@ -89,8 +89,8 @@ errorbar(0:dmax-1,mean(BN_3(:,1:dmax)),std(BN_3(:,1:dmax))); hold on
 errorbar(0:dmax-1,mean(BN_4(:,1:dmax)),std(BN_4(:,1:dmax)));
 errorbar(0:dmax-1,mean(BN_5(:,1:dmax)),std(BN_5(:,1:dmax)));
 errorbar(0:dmax-1,mean(BN_6(:,1:dmax)),std(BN_6(:,1:dmax)));
-% errorbar(0:dmax-1,mean(BN_7(:,1:dmax)),std(BN_7(:,1:dmax)));
-legend('E3','E4','E5','E6');%,'E7');
+errorbar(0:dmax-1,mean(BN_7(:,1:dmax)),std(BN_7(:,1:dmax)));
+legend('E3','E4','E5','E6','E7');
 xlabel('Betti number order')
 ylabel('Betti number')
 title('Betti numbers')

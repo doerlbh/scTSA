@@ -18,6 +18,7 @@ SC = zeros(st,dmax);
 
 for t = 1:st
     
+    disp(['sample ' num2str(t)]);
     L = WitnessStream.makeRandomLandmarks(pdata, ss);
     R = WitnessStream.estimateRmax(pdata, L);
     
@@ -40,5 +41,7 @@ for t = 1:st
         catch
         end
     end
+    
+    clear wit wit_Expl intervals
     
 end
