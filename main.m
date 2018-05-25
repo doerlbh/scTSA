@@ -75,14 +75,22 @@ load SC.mat
 
 %% plot SC
 
-errorbar(1:dmax,mean(SC_3),std(SC_3)); hold on
-errorbar(1:dmax,mean(SC_4),std(SC_4));
-errorbar(1:dmax,mean(SC_5),std(SC_5));
-errorbar(1:dmax,mean(SC_6),std(SC_6));
-errorbar(1:dmax,mean(SC_7),std(SC_7));
+% errorbar(1:dmax,mean(SC_3),std(SC_3)); hold on
+% errorbar(1:dmax,mean(SC_4),std(SC_4));
+% errorbar(1:dmax,mean(SC_5),std(SC_5));
+% errorbar(1:dmax,mean(SC_6),std(SC_6));
+% errorbar(1:dmax,mean(SC_7),std(SC_7));
+
+plot(1:dmax,log(mean(SC_3))); hold on
+plot(1:dmax,log(mean(SC_4)));
+plot(1:dmax,log(mean(SC_5)));
+plot(1:dmax,log(mean(SC_6)));
+plot(1:dmax,log(mean(SC_7)));
+
 legend('E3','E4','E5','E6','E7');
 xlabel('dimension')
-ylabel('# of complexes')
+% ylabel('# of complexes')
+ylabel('log(# of complexes)')
 title('number of simplicial complexes (with n = 50)')
 
 %% plot BN
