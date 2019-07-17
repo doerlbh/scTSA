@@ -22,7 +22,7 @@ for t = 1:st
     L = WitnessStream.makeRandomLandmarks(pdata, ss);
     R = WitnessStream.estimateRmax(pdata, L);
     
-    tmax = R/10;
+    tmax = R/11;
     
     wit = Plex.WitnessStream(delta, dmax, tmax, L, pdata);
     

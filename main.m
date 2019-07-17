@@ -16,8 +16,9 @@ st = 20;
 %% use preprocessed scTDA embryo data
 
 data = importdata('Embryo.mapper.tsv');
+data = data.data;
 embryo_all = importdata('Embryo.all.tsv');
-timepoints = cell2mat(embryo_all.textdata(2:end,2));
+timepoints = embryo_all.textdata(2:end,2);
 
 tabulate(timepoints)
 
@@ -75,34 +76,123 @@ load SC.mat
 
 %% plot SC
 
-% errorbar(1:dmax,mean(SC_3),std(SC_3)); hold on
+figure(1)
+lw = 2;
+
+stages = 5;
+c = [linspace(0,0.9,stages);linspace(0,0.9,stages);linspace(0,0.9,stages)]';
+c = flipud(c);
+
+plot(1:dmax,log(mean(SC_3)),'lineWidth',lw,'Color',c(1,:)); hold on
+plot(1:dmax,log(mean(SC_4)),'lineWidth',lw,'Color',c(2,:)); 
+plot(1:dmax,log(mean(SC_5)),'lineWidth',lw,'Color',c(3,:)); 
+plot(1:dmax,log(mean(SC_6)),'lineWidth',lw,'Color',c(4,:));
+plot(1:dmax,log(mean(SC_7)),'lineWidth',lw,'Color',c(5,:));
+
+% legend('T1','T2','T3','T4','T5','T6','T7','T8','T9','T10','T11','T12');
+xlabel('dimension')
+
+% ylabel('# of complexes')
+ylabel('log(# of complexes)')
+
+colormap(c)
+caxis([1 stages])
+h = colorbar;
+ylabel(h, 'timepoints')
+
+title('number of simplicial complexes (with n = 50)')
+
+
+% erroDrbar(1:dmax,mean(SC_3),std(SC_3)); hold on
 % errorbar(1:dmax,mean(SC_4),std(SC_4));
 % errorbar(1:dmax,mean(SC_5),std(SC_5));
 % errorbar(1:dmax,mean(SC_6),std(SC_6));
 % errorbar(1:dmax,mean(SC_7),std(SC_7));
 
-plot(1:dmax,log(mean(SC_3))); hold on
-plot(1:dmax,log(mean(SC_4)));
-plot(1:dmax,log(mean(SC_5)));
-plot(1:dmax,log(mean(SC_6)));
-plot(1:dmax,log(mean(SC_7)));
+% plot(1:dmax,log(mean(SC_3))); hold on
+% plot(1:dmax,log(mean(SC_4)));
+% plot(1:dmax,log(mean(SC_5)));
+% plot(1:dmax,log(mean(SC_6)));
+% plot(1:dmax,log(mean(SC_7)));
+% 
+% legend('E3','E4','E5','E6','E7');
+% xlabel('dimension')
+% % ylabel('# of complexes')
+% ylabel('log(# of complexes)')
+% title('number of simplicial complexes (with n = 50)')
 
-legend('E3','E4','E5','E6','E7');
-xlabel('dimension')
-% ylabel('# of complexes')
-ylabel('log(# of complexes)')
+%% 
+figure(2)
+X = [log(mean(SC_3)); 
+    log(mean(SC_4)); 
+    log(mean(SC_5));
+    log(mean(SC_6));
+    log(mean(SC_7))];
+surf(X')
+xlabel('timepoints')
+ylabel('dimension')
+zlabel('log(# of complexes)')
 title('number of simplicial complexes (with n = 50)')
+
 
 %% plot BN
 
-errorbar(0:dmax-1,mean(BN_3(:,1:dmax)),std(BN_3(:,1:dmax))); hold on
-errorbar(0:dmax-1,mean(BN_4(:,1:dmax)),std(BN_4(:,1:dmax)));
-errorbar(0:dmax-1,mean(BN_5(:,1:dmax)),std(BN_5(:,1:dmax)));
-errorbar(0:dmax-1,mean(BN_6(:,1:dmax)),std(BN_6(:,1:dmax)));
-errorbar(0:dmax-1,mean(BN_7(:,1:dmax)),std(BN_7(:,1:dmax)));
-legend('E3','E4','E5','E6','E7');
+figure(3)
+lw = 2;
+
+stages = 5;
+c = [linspace(0,0.9,stages);linspace(0,0.9,stages);linspace(0,0.9,stages)]';
+c = flipud(c);
+
+errorbar(0:dmax-1,mean(BN_3(:,1:dmax)),conf95(BN_3(:,1:dmax)) ,'lineWidth',lw,'Color',c(1,:)); hold on
+errorbar(0:dmax-1,mean(BN_4(:,1:dmax)),conf95(BN_4(:,1:dmax)) ,'lineWidth',lw,'Color',c(2,:));
+errorbar(0:dmax-1,mean(BN_5(:,1:dmax)),conf95(BN_5(:,1:dmax)) ,'lineWidth',lw,'Color',c(3,:)); 
+errorbar(0:dmax-1,mean(BN_6(:,1:dmax)),conf95(BN_6(:,1:dmax)) ,'lineWidth',lw,'Color',c(4,:));
+errorbar(0:dmax-1,mean(BN_7(:,1:dmax)),conf95(BN_7(:,1:dmax)) ,'lineWidth',lw,'Color',c(5,:));
+
+% legend('T1','T2','T3','T4','T5','T6','T7','T8','T9','T10','T11','T12');
 xlabel('Betti number order')
 ylabel('Betti number')
+
+colormap(c)
+caxis([1 stages])
+h = colorbar;
+ylabel(h, 'timepoints')
+
+axis([0 6 0 10])
+title('Betti numbers (with n = 50)')
+
+% 
+% % errorbar(0:dmax-1,mean(BN_3(:,1:dmax)),std(BN_3(:,1:dmax))); hold on
+% % errorbar(0:dmax-1,mean(BN_4(:,1:dmax)),std(BN_4(:,1:dmax)));
+% % errorbar(0:dmax-1,mean(BN_5(:,1:dmax)),std(BN_5(:,1:dmax)));
+% % errorbar(0:dmax-1,mean(BN_6(:,1:dmax)),std(BN_6(:,1:dmax)));
+% % errorbar(0:dmax-1,mean(BN_7(:,1:dmax)),std(BN_7(:,1:dmax)));
+% 
+% errorbar(0:dmax-1,mean(BN_3(:,1:dmax)),conf95(BN_3(:,1:dmax)) ); hold on
+% errorbar(0:dmax-1,mean(BN_4(:,1:dmax)),conf95(BN_4(:,1:dmax)) );
+% errorbar(0:dmax-1,mean(BN_5(:,1:dmax)),conf95(BN_5(:,1:dmax)) );
+% errorbar(0:dmax-1,mean(BN_6(:,1:dmax)),conf95(BN_6(:,1:dmax)) );
+% errorbar(0:dmax-1,mean(BN_7(:,1:dmax)),conf95(BN_7(:,1:dmax)) );
+% 
+% legend('E3','E4','E5','E6','E7');
+% xlabel('Betti number order')
+% ylabel('Betti number')
+% axis([0 6 0 10])
+% title('Betti numbers (with n = 50)')
+
+%% 
+
+figure(4)
+X = [(mean(BN_3(:,1:dmax))); 
+    (mean(BN_4(:,1:dmax))); 
+    (mean(BN_5(:,1:dmax)));
+    (mean(BN_6(:,1:dmax)));
+    (mean(BN_7(:,1:dmax)))];
+surf(X')
+xlabel('timepoints')
+ylabel('Betti number order')
+zlabel('Betti number')
 title('Betti numbers (with n = 50)')
 
 %% plot BN3 vs. BN1
@@ -118,7 +208,7 @@ BN3 = [mean(BN_3(:,2)),mean(BN_4(:,4)),mean(BN_5(:,4)),mean(BN_6(:,4)),mean(BN_7
 % plot(BN1(4),BN3(4), 'o');
 % plot(BN1(5),BN3(5), 'o');
 
-E3 = [BN1(1), BN3(1)];
+E3 = [BN1(1), BN3(3)];
 E4 = [BN1(2), BN3(2)];
 E5 = [BN1(3), BN3(3)];
 E6 = [BN1(4), BN3(4)];
