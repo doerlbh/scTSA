@@ -1,8 +1,7 @@
 # scTSA
 
-![scTSA](./img/tSNE_TDA_timepoints_c40.png){width=50%}
 
-
+<img src="./img/tSNE_TDA_timepoints_c40.png" width="50%">
 
 
 
@@ -34,7 +33,8 @@ All the experimental results can be reproduced using the code in this repository
 
 The lack of a formal link between cell-cell cohabitation and its emergent dynamics into cliques during development has hampered our understanding of how cell populations proliferate, differentiate, and compete, i.e. the cell ecology. With the advancement of single-cell RNA-sequencing (RNA-seq), we have now come closer to describing such a link by taking cell-specific transcriptional programs into account, constructing graphs of a network that reflect the similarity of gene expression, and analyzing these graphs using algebraic topology. We proposed single-cell topological simplicial analysis (scTSA). Applying this approach to single-cell gene expression profiles from local networks of cells in different developmental stages with different outcomes revealed a previously unseen topology of cellular ecology. These networks contain an abundance of cliques of single-cell profiles bound into cavities that guide the emergence of more complicated habitation forms. We visualize these ecological patterns with topological simplicial architectures of these networks, compared with the null models. Benchmarked on single-cell RNA-seq of zebrafish embryogenesis over 25 cell types and 12 time steps, our approach highlights the gastrulation as the most critical stage, consistent with consensus in developmental biology. As a nonlinear, model-independent, and unsupervised framework, our approach can also be applied to tracing multi-scale cell lineage, identifying critical stages, or creating pseudo-time series.
 
-<img src="./img/TDA_mds_timepoint_simplices_n100.png" alt="scTSA" title="scTSA" style="width:50%;" />
+
+<img src="./img/TDA_mds_timepoint_simplices_n100.png" width="50%">
 
 
 
