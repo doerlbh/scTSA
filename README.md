@@ -21,7 +21,7 @@ by [Baihan Lin](http://www.columbia.edu/~bl2681/) (Columbia), [Raul Rabadan](htt
 
 
 
-Link to the latest full paper to come~
+Link to the latest full papers to come~
 
 All the experimental results can be reproduced using the code in this repository. Feel free to contact me by doerlbh@gmail.com if you have any question about our work.
 
