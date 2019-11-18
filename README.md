@@ -1,6 +1,6 @@
 # scTSA
 
-<img src="./img/tSNE_TDA_timepoints_c40.png" alt="scTSA" style="width:50%;" />
+![scTSA](./img/tSNE_TDA_timepoints_c40.png){width=50%}
 
 
 
