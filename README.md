@@ -3,7 +3,11 @@
 
 <img src="./img/tSNE_TDA_timepoints_c40.png" width="50%">
 
-
+   
+   
+Single-Cell Topological Simplicial Analysis (scTSA) by [Baihan Lin](https://www.baihan.nyc/) (Columbia University)   
+  
+  
 **Abstract**
 
 
