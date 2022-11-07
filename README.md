@@ -4,7 +4,7 @@
 
 Single-Cell Topological Simplicial Analysis (scTSA) by [Baihan Lin](https://www.neuroinference.com/) (Columbia University)
 
-Codes to our *Algorithms 2022* and *IEEE BIBM 2022* paper "Topological Data Analysis in Time Series: Temporal Filtration and Application to Single-Cell Genomics" [https://arxiv.org/abs/2204.14048](https://arxiv.org/abs/2204.14048)
+Codes to our *Algorithms 2022* and *IEEE BIBM 2022* paper "Topological Data Analysis in Time Series: Temporal Filtration and Application to Single-Cell Genomics" [https://doi.org/10.3390/a15100371](https://doi.org/10.3390/a15100371)
 
 **Abstract**
 
